@@ -1,3 +1,5 @@
+/* Andrew (Dewey) Foley on 7/18/18 */
+
 package co.grandcircus.lab4;
 
 import java.util.InputMismatchException;
