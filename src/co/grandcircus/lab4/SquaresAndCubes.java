@@ -44,7 +44,7 @@ public class SquaresAndCubes {
      * required, and loops until one is entered.
      * 
      * @param Scanner
-     * @return Integer
+     * @return integer
      */
     private static int getValidInput(Scanner scnr) {
 	boolean inputIsValid = false;
@@ -62,7 +62,7 @@ public class SquaresAndCubes {
 	    } catch (InputMismatchException ime) {
 		System.out.println("\n -- You must enter a positive integer! --\n");
 	    }
-	    
+
 	    scnr.nextLine(); /* Clear trash values */
 
 	} while (!inputIsValid);
