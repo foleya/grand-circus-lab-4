@@ -18,12 +18,12 @@ public class SquaresAndCubes {
 	Scanner scnr = new Scanner(System.in);
 	String cont;
 	int input;
+	
+	// Run program as long as user wants to continue
 	do {
 	    // Prompt user to enter a positive integer
 	    input = getValidInput(scnr);
-
-	    // Clear trash values
-	    scnr.nextLine();
+	    scnr.nextLine(); 	/* clear trash values */
 
 	    // Display table of squares and cubes from 1 through the user's integer
 	    printNumSquareCubeTable(input);
@@ -58,11 +58,11 @@ public class SquaresAndCubes {
 		    inputIsValid = true;
 		} else {
 		    System.out.println("\n -- You must enter a positive integer! --\n");
-		    scnr.nextLine();	/* Clear trash values */
+		    scnr.nextLine(); /* Clear trash values */
 		}
 	    } catch (InputMismatchException ime) {
 		System.out.println("\n -- You must enter a positive integer! --\n");
-		scnr.nextLine(); 	/* Clear trash values */
+		scnr.nextLine(); /* Clear trash values */
 	    }
 	} while (!inputIsValid);
 
