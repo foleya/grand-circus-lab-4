@@ -9,13 +9,18 @@ public class SquaresAndCubes {
 	numberTableProgramLoop();
     }
 
+    /**
+     * This method contains the primary logic loop for the program. It asks the user
+     * to enter an integer, then generates a table of the user's integer's squares
+     * and cubes. This method loops if the user specifically requests it.
+     */
     private static void numberTableProgramLoop() {
 	Scanner scnr = new Scanner(System.in);
 	String cont;
 	int input;
 	do {
-	    // Prompt user to enter an integer
-	    input = getInput(scnr);
+	    // Prompt user to enter a positive integer
+	    input = getValidInput(scnr);
 
 	    // Clear trash values
 	    scnr.nextLine();
@@ -27,13 +32,50 @@ public class SquaresAndCubes {
 	    cont = confirmContinue(scnr);
 
 	} while (cont.equalsIgnoreCase("y"));
+
+	// Close scanner resource
+	scnr.close();
     }
 
-    private static String confirmContinue(Scanner scnr) {
-	System.out.println("\nWould you like to enter another integer? (y/n)");
-	return scnr.nextLine();
+    /**
+     * This method takes a Scanner as a parameter, prompts a user to enter an
+     * integer and then returns that integer. If the user does not input an integer,
+     * or enters a negative integer, it informs the user that a positive integer is
+     * required, and looping until one is entered.
+     * 
+     * @param Scanner
+     * @return Integer
+     */
+    private static int getValidInput(Scanner scnr) {
+	boolean inputIsValid = false;
+	int input = 0;
+
+	do {
+	    System.out.print("Please enter a positive integer: ");
+	    try {
+		input = scnr.nextInt();
+		if (input > 0) {
+		    inputIsValid = true;
+		} else {
+		    System.out.println("\n -- You must enter a positive integer! --\n");
+		    scnr.nextLine();	/* Clear trash values */
+		}
+	    } catch (InputMismatchException ime) {
+		System.out.println("\n -- You must enter a positive integer! --\n");
+		scnr.nextLine(); 	/* Clear trash values */
+	    }
+	} while (!inputIsValid);
+
+	return input;
     }
 
+    /**
+     * This method takes an integer as a parameter, then uses defined style settings
+     * to print a table displaying the squares and cubes of each number from 1
+     * through the integer parameter.
+     * 
+     * @param integer
+     */
     private static void printNumSquareCubeTable(int input) {
 	// Define header and div styles
 	String div = "=======";
@@ -49,22 +91,16 @@ public class SquaresAndCubes {
 	}
     }
 
-    private static int getInput(Scanner scnr) {
-	boolean inputIsValid = false;
-	int input = 0;
-
-	do {
-	    System.out.print("Please enter an integer: ");
-	    try {
-		input = scnr.nextInt();
-		inputIsValid = true;
-	    } catch (InputMismatchException ime) {
-		System.out.println("\n -- You must enter an integer! --");
-		scnr.nextLine();		/* Clear trash values */
-	    }
-	} while (!inputIsValid);
-	
-	return input;
+    /**
+     * This method asks if the user would like to continue. It takes a scanner as a
+     * parameter and returns the user's answer as a string.
+     * 
+     * @param Scanner
+     * @return String
+     */
+    private static String confirmContinue(Scanner scnr) {
+	System.out.println("\nWould you like to enter another integer? (y/n)");
+	return scnr.nextLine();
     }
 
 }
