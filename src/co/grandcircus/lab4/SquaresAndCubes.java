@@ -16,23 +16,22 @@ public class SquaresAndCubes {
      */
     private static void numberTableProgramLoop() {
 	Scanner scnr = new Scanner(System.in);
-	String cont;
+	String runAgain;
 	int input;
-	
+
 	// Run program as long as user wants to continue
 	do {
 	    // Prompt user to enter a positive integer
 	    input = getValidInput(scnr);
-	    scnr.nextLine(); 	/* clear trash values */
 
 	    // Display table of squares and cubes from 1 through the user's integer
 	    printNumSquareCubeTable(input);
 
 	    // Ask user if they would like to enter another integer
 	    System.out.println("\nWould you like to enter another integer? (y/n)");
-	    cont = scnr.nextLine().toLowerCase().trim();
+	    runAgain = scnr.nextLine().toLowerCase().trim();
 
-	} while (cont.equalsIgnoreCase("y"));
+	} while (runAgain.equals("y"));
 
 	// Close scanner resource
 	scnr.close();
@@ -59,12 +58,13 @@ public class SquaresAndCubes {
 		    inputIsValid = true;
 		} else {
 		    System.out.println("\n -- You must enter a positive integer! --\n");
-		    scnr.nextLine(); /* Clear trash values */
 		}
 	    } catch (InputMismatchException ime) {
 		System.out.println("\n -- You must enter a positive integer! --\n");
-		scnr.nextLine(); /* Clear trash values */
 	    }
+	    
+	    scnr.nextLine(); /* Clear trash values */
+
 	} while (!inputIsValid);
 
 	return input;
@@ -83,7 +83,8 @@ public class SquaresAndCubes {
 	String spacing = "\t";
 
 	// Print table header
-	System.out.println("\nNumber" + spacing + "Squared" + spacing + "Cubed");
+	System.out.println("\nTable for " + input + ":");
+	System.out.println("Number" + spacing + "Squared" + spacing + "Cubed");
 	System.out.println(div + spacing + div + spacing + div);
 
 	// Print numbers, their squares, and their cubes
