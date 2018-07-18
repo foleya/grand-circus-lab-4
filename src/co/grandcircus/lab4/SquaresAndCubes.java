@@ -29,7 +29,8 @@ public class SquaresAndCubes {
 	    printNumSquareCubeTable(input);
 
 	    // Ask user if they would like to enter another integer
-	    cont = confirmContinue(scnr);
+	    System.out.println("\nWould you like to enter another integer? (y/n)");
+	    cont = scnr.nextLine().toLowerCase().trim();
 
 	} while (cont.equalsIgnoreCase("y"));
 
@@ -41,7 +42,7 @@ public class SquaresAndCubes {
      * This method takes a Scanner as a parameter, prompts a user to enter an
      * integer and then returns that integer. If the user does not input an integer,
      * or enters a negative integer, it informs the user that a positive integer is
-     * required, and looping until one is entered.
+     * required, and loops until one is entered.
      * 
      * @param Scanner
      * @return Integer
@@ -89,18 +90,6 @@ public class SquaresAndCubes {
 	for (int i = 1; i <= input; i++) {
 	    System.out.println(i + spacing + (i * i) + spacing + (i * i * i));
 	}
-    }
-
-    /**
-     * This method asks if the user would like to continue. It takes a scanner as a
-     * parameter and returns the user's answer as a string.
-     * 
-     * @param Scanner
-     * @return String
-     */
-    private static String confirmContinue(Scanner scnr) {
-	System.out.println("\nWould you like to enter another integer? (y/n)");
-	return scnr.nextLine();
     }
 
 }
